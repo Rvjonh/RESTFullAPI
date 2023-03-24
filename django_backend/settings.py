@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "drf_spectacular",
     # Local
     "accounts.apps.AccountsConfig",
+    "tasks.apps.TasksConfig",
     "apiv1.apps.Apiv1Config",
 ]
 
