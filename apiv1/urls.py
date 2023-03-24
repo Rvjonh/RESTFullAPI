@@ -1,9 +1,12 @@
 from django.urls import path, include, re_path
-from django.views.generic import TemplateView
+from rest_framework.routers import SimpleRouter
 
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
-from .views import EmailSenderView
+from .views import EmailSenderView, TaskModelViewSet
+
+router = SimpleRouter()
+router.register("tasks", TaskModelViewSet, basename="tasks")
 
 
 urlpatterns = [
@@ -18,4 +21,4 @@ urlpatterns = [
     ),
     path("schema/", SpectacularAPIView.as_view(), name="schema"),
     path("swagger/", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger"),
-]
+] + router.urls

@@ -67,10 +67,6 @@ REST_FRAMEWORK = {
 }
 
 
-REST_AUTH_SERIALIZERS = {
-    "PASSWORD_RESET_SERIALIZER": "apiv1.serializers.CustomPasswordResetSerializer"
-}
-
 SPECTACULAR_SETTINGS = {
     "TITLE": "Tasks API Project",
     "DESCRIPTION": "A sample api to work with DRF",

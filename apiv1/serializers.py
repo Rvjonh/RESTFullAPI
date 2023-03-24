@@ -1,10 +1,19 @@
-from dj_rest_auth.serializers import PasswordResetSerializer
+from rest_framework import serializers
+from tasks.models import TaskModel
 
 
-class CustomPasswordResetSerializer(PasswordResetSerializer):
-    def get_email_options(self):
-        return {
-            "email_template": "email/account/user_password_reset",
-            "client_app": "hijos de puta",
-            "current_site": "current_site.com",
+class TaskModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = (
+            "id",
+            "title",
+            "description",
+            "user",
+            "created_at",
+            "updated_at",
+        )
+        model = TaskModel
+        read_only_fields = ("user",)
+        extra_kwargs = {
+            "user": {"read_only": True},
         }
