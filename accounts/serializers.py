@@ -8,7 +8,17 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = MyUser
         fields = ("email", "password")
-        extra_kwargs = {"password": {"write_only": True}}
+        extra_kwargs = {
+            "password": {"write_only": True},
+            "email": {"required": True},
+        }
+
+    def validate(self, data):
+        if MyUser.objects.filter(username=data["email"]).exists():
+            raise serializers.ValidationError(
+                {"Error": f'{data["email"]} already registered'}
+            )
+        return data
 
     def create(self, validated_data):
         password = validated_data.pop("password")
