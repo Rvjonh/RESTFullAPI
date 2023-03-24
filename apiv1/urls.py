@@ -3,7 +3,7 @@ from rest_framework.routers import SimpleRouter
 
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
-from .views import EmailSenderView, TaskModelViewSet
+from .views import EmailSenderView, TaskModelViewSet, SignUpUser
 
 router = SimpleRouter()
 router.register("tasks", TaskModelViewSet, basename="tasks")
@@ -11,7 +11,7 @@ router.register("tasks", TaskModelViewSet, basename="tasks")
 
 urlpatterns = [
     path("auth/", include("rest_framework.urls")),
-    path("rest-auth/", include("accounts.urls")),
+    path("rest-auth/signup/", SignUpUser.as_view(), name="signup"),
     path("rest-auth/", include("dj_rest_auth.urls")),
     # this url is used to generate email content
     re_path(
