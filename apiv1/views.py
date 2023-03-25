@@ -21,6 +21,11 @@ MyUser = get_user_model()  # CustomUser model to make references
 class CustomLoginView(LoginView):
     serializer_class = CustomLoginSerializer
 
+    def get_response(self):
+        response = super().get_response()
+        response.data = {"token": response.data["key"]}
+        return response
+
 
 class SignUpUser(CreateAPIView):
     queryset = MyUser.objects.all()

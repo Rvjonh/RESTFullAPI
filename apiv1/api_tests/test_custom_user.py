@@ -92,7 +92,7 @@ class CustomUserLoginTest(APITestCase):
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        expected_dict = {"key": token_my_user_checker.key}
+        expected_dict = {"token": token_my_user_checker.key}
         self.assertDictContainsSubset(expected_dict, response.data)
 
     def test_required_fields(self):
@@ -138,7 +138,7 @@ class CustomUserLogoutTest(APITestCase):
         response = self.client.post(url, data, format="json")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
-        expected_dict = {"key": self.myUserToken.key}
+        expected_dict = {"token": self.myUserToken.key}
         self.assertDictContainsSubset(expected_dict, response.data)
 
         self.client.credentials(HTTP_AUTHORIZATION="Token " + self.myUserToken.key)
