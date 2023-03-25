@@ -15,6 +15,11 @@ class UserSerializer(serializers.ModelSerializer):
         }
 
     def validate(self, data):
+        if data["email"] == "":
+            raise serializers.ValidationError(
+                {"Error": f"Email empty, enter a valid email."}
+            )
+
         if MyUser.objects.filter(username=data["email"]).exists():
             raise serializers.ValidationError(
                 {"Error": f'{data["email"]} already registered'}
