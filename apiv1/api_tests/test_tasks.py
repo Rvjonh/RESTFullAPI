@@ -45,7 +45,7 @@ class TaskModelTest(APITestCase):
         self.assertEqual(response.data["id"], 1)
         self.assertEqual(response.data["title"], "my task test")
         self.assertEqual(response.data["description"], "my task's description test")
-        self.assertEqual(response.data["user"], 1)
+        self.assertEqual(response.data["user"], self.test_user.id)
 
     def test_api_create_task_required_fields(self):
         """Require title and description fields"""
@@ -126,7 +126,8 @@ class TaskModelTest(APITestCase):
 
         response = self.client.get(url, format="json")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data["id"], self.test_user.id)
+        self.assertEqual(response.data["id"], task_test.id)
+        self.assertEqual(response.data["user"], self.test_user.id)
         self.assertEqual(response.data["title"], task_test.title)
         self.assertEqual(response.data["description"], task_test.description)
 
