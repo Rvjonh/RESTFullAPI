@@ -1,8 +1,14 @@
 from rest_framework import serializers
 from tasks.models import TaskModel
 from django.contrib.auth import get_user_model
+from dj_rest_auth.serializers import LoginSerializer
 
 MyUser = get_user_model()
+
+
+class CustomLoginSerializer(LoginSerializer):
+    username = None
+    email = serializers.EmailField(required=True, allow_blank=False)
 
 
 class UserSerializer(serializers.ModelSerializer):

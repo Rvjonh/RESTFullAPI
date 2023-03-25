@@ -7,15 +7,19 @@ from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from rest_framework import status
-
+from dj_rest_auth.views import LoginView
 from tasks.models import TaskModel
 
-from .serializers import TaskModelSerializer, UserSerializer
+from .serializers import TaskModelSerializer, UserSerializer, CustomLoginSerializer
 from .permissions import IsAuthor
 
 # Create your views here.
 
 MyUser = get_user_model()  # CustomUser model to make references
+
+
+class CustomLoginView(LoginView):
+    serializer_class = CustomLoginSerializer
 
 
 class SignUpUser(CreateAPIView):
