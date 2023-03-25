@@ -60,6 +60,15 @@ Requirements: Python
     Quit the server with CTRL-BREAK.
     ```
 
+## Running Test
+
+Already added test for user administration and CRUD in task model
+Django executes test with:
+
+```CMD
+python manage.py test
+```
+
 ## Generate Secrect Key
 
 > To create a new Secreat Key for django.settings
