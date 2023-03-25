@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page API</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <nav class="navbar">
+
+    </nav>
+    <div class="container">
+        <h1 class="title">Home Page</h1>
+        <p class="para">Esta es la primera pagina del backend, aqui puedes acceder a diferentes zonas.</p>
+        <div class="sections">
+            <div class="section border-green">
+                <h2>Admin panel</h2>
+                <p>Entra aqui para administrar el backend y todos sus datos con una cuenta de administrador</p>
+                <a class="link-action link-green link-focus" href="/admin">administracion</a>
+            </div>
+            <div class="section border-red">
+                <h2>Documentacion de la API</h2>
+                <p>Entra aqui para ver la documentacion endpoints de la api.</p>
+                <p>Documentacion en formato swagger</p>
+                <a class="link-action link-red link-focus" href="{% url 'swagger' %}">Swagger Documentry</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

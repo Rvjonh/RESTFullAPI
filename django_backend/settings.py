@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     "accounts.apps.AccountsConfig",
     "tasks.apps.TasksConfig",
     "apiv1.apps.Apiv1Config",
+    "pages.apps.PagesConfig",
 ]
 
 REST_FRAMEWORK = {
